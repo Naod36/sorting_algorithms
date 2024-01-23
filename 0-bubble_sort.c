@@ -1,46 +1,50 @@
 #include "sort.h"
 
 /**
- * chang_pos - Changes two positions of values in an array.
- * @a: The first integer.
- * @b: The second integer.
+ * chang_pos - Changes position of values in the array
+ *
+ * @array: array to be changed
+ * @first: first index
+ * @second: second index
  */
-void chang_pos(int *a, int *b)
+void chang_pos(int **array, size_t first, size_t second)
 {
 	int holder;
 
-	holder = *a;
-	*a = *b;
-	*b = holder;
+	holder = (*array)[first];
+	(*array)[first] = (*array)[second];
+	(*array)[second] = holder;
 }
 
 /**
- * bubble_sort - Sorts an array of integers as a bubble.
- * @array: An array of integers to be sorted.
- * @size: The size of the array to be sorted.
+ * bubble_sort - sorting algorithm that sorts in the form
+ * of a bubble
  *
- * Description: Prints the array after each position change.
+ * @array: array to be sorted
+ * @size: size of the array
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, len = size;
-	bool bubbly = false;
+	size_t i, j, flag;
 
-	if (array == NULL || size < 2)
+	if (size < 2)
 		return;
 
-	while (bubbly == false)
+	for (i = 0; i < size; i++)	
 	{
-		bubbly = true;
-		for (i = 0; i < len - 1; i++)
+		flag = 0;
+		for (j = 0; j < size - i - 1; j++)
 		{
-			if (array[i] > array[i + 1])
+			if (array[j] > array[j + 1])
 			{
-				chang_pos(array + i, array + i + 1);
+				chang_pos(&array, j, j + 1);
 				print_array(array, size);
-				bubbly = false;
+				flag = 1;
 			}
 		}
-		len--;
+
+		/* check if no swap occurred */
+		if (!flag)
+			break;
 	}
 }
