@@ -2,7 +2,6 @@
 
 /**
  * chang_pos - Changes two positions of values in an array.
- * @holder: Temporarey space for integer.
  * @a: The first integer.
  * @b: The second integer.
  */
@@ -17,7 +16,7 @@ void chang_pos(int *a, int *b)
 
 /**
  * bubble_sort - Sorts an array of integers as a bubble.
- * @array: Array of integers to be sorted.
+ * @array: An array of integers to be sorted.
  * @size: The size of the array to be sorted.
  *
  * Description: Prints the array after each position change.
