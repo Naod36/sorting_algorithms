@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * chang_pos - changes two positions of values in an array.
+ * chang_int - changes two integers in an array.
  * @a: The first integer to change.
  * @b: The second integer to chamge.
  */
-void chang_pos(int *a, int *b)
+void chang_int(int *a, int *b)
 {
 	int tmp;
 
@@ -38,7 +38,7 @@ void selection_sort(int *array, size_t size)
 
 		if ((array + i) != min)
 		{
-			chang_pos(array + i, min);
+			chang_int(array + i, min);
 			print_array(array, size);
 		}
 	}
