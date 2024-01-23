@@ -1,45 +1,56 @@
 #include "sort.h"
 
 /**
- * chang_pos - changes two positions of values in an array.
- * @a: The first integer.
- * @b: The second integer.
+ * change_pos - Changes position of values in the array
+ *
+ * @array: array to be changed
+ * @first: first index
+ * @second: second index
  */
-void chang_pos(int *a, int *b)
+void change_pos(int **array, size_t first, size_t second)
 {
 	int holder;
 
-	holder = *a;
-	*a = *b;
-	*b = holder;
+	holder = (*array)[first];
+	(*array)[first] = (*array)[second];
+	(*array)[second] = holder;
 }
 
 /**
- * selection_sort - Sort an array of integers in ascending order
- *                  using the selection sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
+ * selection_sort - uses the selection algorithm to sort
+ * the array
  *
- * Description: Print the array after each change.
+ * @array: an array to be sorted
+ * @size: size of the array
  */
 void selection_sort(int *array, size_t size)
 {
-	int *min;
 	size_t i, j;
+	int min_val, min_index, flag;
 
-	if (array == NULL || size < 2)
+	if (size < 2)
 		return;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size; i++)
 	{
-		min = array + i;
-		for (j = i + 1; j < size; j++)
-			min = (array[j] < *min) ? (array + j) : min;
+		min_val = array[i];
+		min_index = i;
+		flag = 0;
 
-		if ((array + i) != min)
+		for (j = i + 1; j < size; j++)
 		{
-			chang_pos(array + i, min);
+			if (min_val > array[j])  
+			{
+				min_val = array[j];
+				min_index = j;
+				flag = 1;
+			}
+		}
+
+		if (flag)
+		{
+			change_pos(&array, i, min_index);
 			print_array(array, size);
 		}
 	}
-}
+}}
