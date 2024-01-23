@@ -2,16 +2,16 @@
 
 /**
  * chang_pos - changes two positions of values in an array.
- * @a: The first integer.
- * @b: The second integer.
+ * @a: The first integer to change.
+ * @b: The second integer to chamge.
  */
 void chang_pos(int *a, int *b)
 {
-	int holder;
+	int tmp;
 
-	holder = *a;
+	tmp = *a;
 	*a = *b;
-	*b = holder;
+	*b = tmp;
 }
 
 /**
