@@ -1,22 +1,22 @@
 /*
  * File: 106-bitonic_sort.c
- * Auth: Brennan D Baraban
+ * Auth: Naod & Eden
  */
 
 #include "sort.h"
 
-void swap_ints(int *a, int *b);
+void s_wap_ints(int *a, int *b);
 void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
 		char flow);
-void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
+void bitonic_sequ(int *array, size_t size, size_t start, size_t seq, char flow);
 void bitonic_sort(int *array, size_t size);
 
 /**
- * swap_ints - Swap two integers in an array.
+ * s_wap_ints - Swap two integers in an array.
  * @a: The first integer to swap.
  * @b: The second integer to swap.
  */
-void swap_ints(int *a, int *b)
+void s_wap_ints(int *a, int *b)
 {
 	int tmp;
 
@@ -52,14 +52,14 @@ void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
 }
 
 /**
- * bitonic_seq - Convert an array of integers into a bitonic sequence.
+ * bitonic_sequ - Convert an array of integers into a bitonic sequence.
  * @array: An array of integers.
  * @size: The size of the array.
  * @start: The starting index of a block of the building bitonic sequence.
  * @seq: The size of a block of the building bitonic sequence.
  * @flow: The direction to sort the bitonic sequence block in.
  */
-void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
+void bitonic_sequ(int *array, size_t size, size_t start, size_t seq, char flow)
 {
 	size_t cut = seq / 2;
 	char *str = (flow == UP) ? "UP" : "DOWN";
@@ -69,8 +69,8 @@ void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
 		printf("Merging [%lu/%lu] (%s):\n", seq, size, str);
 		print_array(array + start, seq);
 
-		bitonic_seq(array, size, start, cut, UP);
-		bitonic_seq(array, size, start + cut, cut, DOWN);
+		bitonic_sequ(array, size, start, cut, UP);
+		bitonic_sequ(array, size, start + cut, cut, DOWN);
 		bitonic_merge(array, size, start, seq, flow);
 
 		printf("Result [%lu/%lu] (%s):\n", seq, size, str);
@@ -92,5 +92,5 @@ void bitonic_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	bitonic_seq(array, size, 0, size, UP);
+	bitonic_sequ(array, size, 0, size, UP);
 }
