@@ -1,14 +1,3 @@
-#ifndef SORT_H
-#define SORT_H
-
-#include <stddef.h>
-
-/* Function prototypes */
-void swap_ints(int *a, int *b);
-void shell_sort(int *array, size_t size);
-
-#endif /* SORT_H */
-
 #include "sort.h"
 
 /**
