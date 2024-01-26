@@ -1,2 +1,2 @@
 Sorting Algorithm (ALX) 
-Auth : Naod Kasshaun & Eden birhan
+Auth : Naod Kasshaun & Eden Birhan
